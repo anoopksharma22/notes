@@ -1,4 +1,7 @@
+import imp
 from pydantic import BaseSettings,Field
+from enum import Enum
+import logging
 
 class Settings(BaseSettings):
     db_user: str = Field(...,env='DB_USER')
@@ -10,3 +13,11 @@ class Settings(BaseSettings):
 
     class Config():
         env_file = '.env'   
+
+
+    def getLogLevel(self):
+        class LogLevel(Enum):
+            DEV = logging.DEBUG
+            PROD = logging.WARNING
+        
+        return LogLevel
