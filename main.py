@@ -5,6 +5,9 @@ from apps.users import (
     models as users_models, 
     schemas as users_schemas , 
     routes as users_routes)
+
+from apps.notes import models as notes_models
+
 from apps.auth import routes as auth_routes
 import logging
 from config import Settings
@@ -26,4 +29,5 @@ app.include_router(auth_routes.router)
 def create_tables():
     logger.info("Creating tables")
     users_models.Base.metadata.create_all(bind=engine)
+    notes_models.Base.metadata.create_all(bind=engine)
 

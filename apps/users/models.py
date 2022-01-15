@@ -18,6 +18,10 @@ class Users(Base):
     password = Column(String)
     is_verfied = Column(Boolean, default=False) 
     is_active = Column(Boolean, default=False)
+    notes = relationship("Notes",back_populates="user")
+
+
+
 
 
 def create_user(db:Session, user: schemas.CreateUser):
