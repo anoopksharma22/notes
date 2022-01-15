@@ -8,6 +8,7 @@ router = APIRouter(
 
 @router.get("/")
 def return_all_notes():
+    print("In note")
     return {
         "all":"notes"
     }
