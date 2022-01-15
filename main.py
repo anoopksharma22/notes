@@ -10,12 +10,10 @@ import logging
 from config import Settings
 settings = Settings()
 
-# logging.basicConfig(level=logging.NOTSET)
+# logging.basicConfig(level=logging.NOTSET) ## to reset the root looging level
 logger = logging.getLogger(__name__)
-log_level = settings.getLogLevel()
-print("###########################")
-print(log_level.DEV)
-# logger.setLevel(log_level.DEV)
+log_level = settings.getLogLevel()  ### check config file for enum 
+logger.setLevel(log_level.DEV.value)
 
 app = FastAPI()
 
