@@ -1,10 +1,9 @@
 from fastapi import FastAPI,status
-from apps.notes import routes as notes_routes
+from apps.notes.routes import notes as notes_routes
 from apps.users.models import users as users_models
 from db import SessionLocal, engine
 from apps.users.routes import users as users_routes
-
-from apps.notes import models as notes_models
+from apps.notes.models import notes as notes_models
 
 from apps.auth import routes as auth_routes
 import logging
