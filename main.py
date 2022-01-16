@@ -10,13 +10,16 @@ from apps.notes import models as notes_models
 
 from apps.auth import routes as auth_routes
 import logging
-from config import Settings
-settings = Settings()
+from decouple import config
 
 # logging.basicConfig(level=logging.NOTSET) ## to reset the root looging level
 logger = logging.getLogger(__name__)
-log_level = settings.getLogLevel()  ### check config file for enum 
-logger.setLevel(log_level.DEV.value)
+env = config('ENV')
+
+if env == 'dev_local':
+    logger.setLevel(logging.DEBUG)
+else:
+    logger.setLevel(logging.WARNING)
 
 app = FastAPI()
 

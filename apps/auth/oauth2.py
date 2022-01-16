@@ -26,9 +26,6 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 def current_user_from_token(token: str = Depends(oauth2_scheme),db_session: Session = Depends(db.get_db)):
-
-    print("I am in current_user from token")
-
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",

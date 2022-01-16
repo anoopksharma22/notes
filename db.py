@@ -1,12 +1,23 @@
+from turtle import circle
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from decouple import config
 
-from config import Settings
+if config('ENV')== 'dev_local': 
+    db_user=config('DB_USER')
+    db_password=config('DB_PASSWORD')
+    db_host=config('DB_HOST')
+    db_port=config('DB_PORT')
+    db_name=config('DB_NAME')
+elif config('ENV')== 'dev_docker':
+    db_user=config('DB_USER_DOCKER')
+    db_password=config('DB_PASSWORD_DOCKER')
+    db_host=config('DB_HOST_DOCKER')
+    db_port=config('DB_PORT_DOCKER')
+    db_name=config('DB_NAME_DOCKER')
 
-settings = Settings()
-
-SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.db_user}:{settings.db_password}@{settings.db_host}:{settings.db_port}/{settings.db_name}"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
