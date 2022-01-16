@@ -5,7 +5,7 @@ from sqlalchemy.orm import relationship
 from apps import users
 from db import Base
 from sqlalchemy.orm.session import Session
-from . import schemas
+from apps.notes.schemas import notes as notes_schema
 from sqlalchemy.dialects.postgresql import JSON,UUID
 import uuid
 from fastapi import HTTPException,status
@@ -22,7 +22,7 @@ class Notes(Base):
 
 
 
-def create_note(db: Session, note: schemas.Note):
+def create_note(db: Session, note: notes_schema.Note):
     note = Notes(
         user_id = note.user_id,
         title = note.title,

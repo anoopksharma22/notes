@@ -6,7 +6,7 @@ from fastapi import HTTPException,status,Depends
 from sqlalchemy.orm.session import Session
 from passlib.context import CryptContext
 import db
-from ..users import models as user_model
+from ..users.models import users as user_model
      
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
     
