@@ -1,7 +1,7 @@
 from typing import Optional
 from pydantic import BaseModel
 from sqlalchemy import orm
-
+from uuid import UUID
 
 
 class UserBase(BaseModel):
@@ -14,7 +14,7 @@ class CreateUser(UserBase):
     password:str
 
 class User(UserBase):
-    id:int
+    id:UUID
     name:Optional[str]
     username:str    
     is_verified:Optional[bool] = False
