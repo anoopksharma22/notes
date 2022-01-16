@@ -5,13 +5,14 @@ from sqlalchemy.orm.session import Session
 from db import Base
 from ..auth import password
 from . import schemas
-
+from sqlalchemy.dialects.postgresql import UUID
+import uuid
 
 class Users(Base):
     
-    __tablename__ = "Users"
+    __tablename__ = "users"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(UUID(as_uuid=True), primary_key=True, index=True,default=uuid.uuid4)
     username = Column(String, unique=True, index=True)
     name = Column(String)
     email = Column(String, unique=True, index=True)
