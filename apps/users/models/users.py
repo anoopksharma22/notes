@@ -3,8 +3,8 @@ from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm.session import Session
 from db import Base
-from ..auth import password
-from . import schemas
+from ...auth import password
+from apps.users.schemas import users as users_schema
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
 
@@ -25,7 +25,7 @@ class Users(Base):
 
 
 
-def create_user(db:Session, user: schemas.CreateUser):
+def create_user(db:Session, user: users_schema.CreateUser):
     hashed_password = password.get_password_hash(user.password)
     db_user = Users(
         name = user.name,

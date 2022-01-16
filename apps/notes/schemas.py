@@ -1,6 +1,6 @@
 from pydantic import BaseModel,Json
 from typing import Any, Dict, List
-from apps.users.schemas import User
+from apps.users.schemas import users as users_schema
 from uuid import UUID
 
 
@@ -15,7 +15,7 @@ class CreateNote(NoteBase):
 
 class Note(NoteBase):
     id: UUID
-    user: User
+    user: users_schema.User
     
     class Config:
         orm_mode=True
