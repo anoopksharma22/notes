@@ -10,7 +10,7 @@ class UserBase(BaseModel):
 
 class CreateUser(UserBase):
     name:Optional[str]
-    usrname:str
+    username:str
     password:str
 
 class User(UserBase):
