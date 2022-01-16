@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 @router.post("/",response_model=schemas.Note)
-def create_note(note: schemas.CreateNote,db: Session = Depends(db.get_db)):
+def create_note(note:schemas.CreateNote,db: Session = Depends(db.get_db)):
     note = models.create_note(db,note)
     return note
 

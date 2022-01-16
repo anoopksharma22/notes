@@ -1,10 +1,11 @@
+import json
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from apps import users
 from db import Base
 from sqlalchemy.orm.session import Session
 from . import schemas
-
+from sqlalchemy.dialects.postgresql import JSON
 
 class Notes(Base):
         
@@ -12,9 +13,9 @@ class Notes(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title= Column(String)
-    content = Column(String)
+    content = Column(JSON)
     user_id = Column(Integer, ForeignKey('Users.id'))
-    user = relationship("Users",back_populates="notes")
+    user = relationship("Users",back_populates="note")
 
 
 
