@@ -35,4 +35,5 @@ def create_tables():
     users_profile_model.Base.metadata.create_all(bind=engine)
     
     
+    
 

@@ -1,22 +1,26 @@
-from pydantic import BaseModel,Json
-from typing import Any, Dict, List
+from datetime import datetime
+from pydantic import BaseModel
+from typing import Any, Dict,Optional
 from apps.users.schemas import users as users_schema
 from uuid import UUID
 
 
 class NoteBase(BaseModel):
-    user_id: UUID
+    creates_ts: datetime
+    updated_ts: datetime
+
+class CreateNote(BaseModel):
     title: str
-    content: Dict[Any, Any]
+    content: Dict[Any, Any]    
+    is_private: Optional[bool] = False
+    tags: str
 
-class CreateNote(NoteBase):
-    pass
 
-
-class Note(NoteBase):
+class Note(CreateNote):
     id: UUID
     user: users_schema.User
-    
+
+
     class Config:
         orm_mode=True
 

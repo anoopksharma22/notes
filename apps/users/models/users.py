@@ -40,7 +40,7 @@ def create_user(db:Session, user: users_schema.CreateUser):
     db_user_profile = users_profile_model.UsersProfile(user=db_user)
     db.add(db_user_profile)
     db.commit()
-    db.refresh(db_user_profile)
+    db.refresh(db_user)
     return db_user
 
 def get_all_users(db:Session):

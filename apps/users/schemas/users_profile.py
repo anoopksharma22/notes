@@ -1,6 +1,5 @@
 from typing import Optional
 from pydantic import BaseModel
-from sqlalchemy import orm
 from uuid import UUID
 from typing import Dict,Any
 
