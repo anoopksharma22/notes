@@ -12,3 +12,4 @@ class UsersProfile(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey('users.id'))
     social = Column(JSON)
     profile_picture = Column(String)
+    user = relationship("Users",back_populates="user_profile")

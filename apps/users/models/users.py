@@ -2,7 +2,7 @@ from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm.session import Session
 from db import Base
-from ...auth import password
+from apps.auth import password
 from apps.users.schemas import users as users_schema
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
@@ -20,7 +20,7 @@ class Users(Base):
     is_verfied = Column(Boolean, default=False) 
     is_active = Column(Boolean, default=False)
     note = relationship("Notes",back_populates="user")
-    user_profile = relationship("UsersProfile",backref="user",uselist=False)
+    user_profile = relationship("UsersProfile",back_populates="user",uselist=False)
     
 
 
