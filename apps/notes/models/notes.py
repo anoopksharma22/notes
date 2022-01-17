@@ -24,7 +24,8 @@ class Notes(Base):
     
     user = relationship("Users",back_populates="note")
     like = relationship("Likes",back_populates="note")     
-
+    comment = relationship("Comments",back_populates="note")
+    download = relationship("Downloads",back_populates="note")
 
 
 def create_note(db: Session, note: notes_schema.Note, user: users_schema.User):
