@@ -25,6 +25,7 @@ def create_download(db,download,user):
     
     if db_download:
         db_download.no_of_downloads += 1
+        db_download.download_ts = datetime.now()
         db.commit()
         db.refresh(db_download)
         return db_download
