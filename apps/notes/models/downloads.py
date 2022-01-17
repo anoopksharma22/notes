@@ -30,13 +30,13 @@ def create_download(db,download,user):
         db.refresh(db_download)
         return db_download
     
-    else:    
-        new_download = Downloads(
-            user_id = user.id,
-            note_id = download.note_id,
-            no_of_downloads = 1
-        )
-        db.add(new_download)
-        db.commit()
-        db.refresh(new_download)
-        return new_download
+   
+    new_download = Downloads(
+        user_id = user.id,
+        note_id = download.note_id,
+        no_of_downloads = 1
+    )
+    db.add(new_download)
+    db.commit()
+    db.refresh(new_download)
+    return new_download
