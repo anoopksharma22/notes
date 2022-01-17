@@ -1,4 +1,3 @@
-import imp
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm.session import Session
@@ -7,6 +6,7 @@ from ...auth import password
 from apps.users.schemas import users as users_schema
 from sqlalchemy.dialects.postgresql import UUID
 import uuid
+from apps.users.models import users_profile as users_profile_model
 
 class Users(Base):
     
@@ -20,7 +20,8 @@ class Users(Base):
     is_verfied = Column(Boolean, default=False) 
     is_active = Column(Boolean, default=False)
     note = relationship("Notes",back_populates="user")
-
+    user_profile = relationship("UsersProfile",backref="user",uselist=False)
+    
 
 
 
@@ -36,6 +37,10 @@ def create_user(db:Session, user: users_schema.CreateUser):
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
+    db_user_profile = users_profile_model.UsersProfile(user=db_user)
+    db.add(db_user_profile)
+    db.commit()
+    db.refresh(db_user_profile)
     return db_user
 
 def get_all_users(db:Session):
