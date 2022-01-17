@@ -24,7 +24,8 @@ class Users(Base):
     note = relationship("Notes",back_populates="user")
     user_profile = relationship("UsersProfile",back_populates="user",uselist=False)
     like = relationship("Likes",back_populates="user")
-
+    comment = relationship("Comments",back_populates="user")
+    download = relationship("Downloads",back_populates="user")
 
 
 

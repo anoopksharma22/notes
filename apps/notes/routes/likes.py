@@ -10,7 +10,7 @@ from typing import List
 
 router = APIRouter(
     prefix='/likes',
-    tags=['likes']
+    tags=['likes','notes']
 )
 
 @router.post("/",response_model=likes_schema.Likes)

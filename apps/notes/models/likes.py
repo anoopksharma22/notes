@@ -1,4 +1,3 @@
-import imp
 from db import Base
 from sqlalchemy import Column,ForeignKey,Boolean,DateTime,UniqueConstraint
 from sqlalchemy.orm import relationship
@@ -43,4 +42,6 @@ def like_a_post(db:Session,like:likes_model.Likes,user:users_model.Users):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,detail=str(e.args))
     
     return db_like
+
+
     
