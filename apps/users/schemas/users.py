@@ -20,6 +20,7 @@ class User(UserBase):
     is_verified:Optional[bool] = False
     is_active:Optional[bool] = False
     user_profile: users_profile_schema.UsersProfile
+    
     class Config:
         orm_mode=True
 

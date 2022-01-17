@@ -19,9 +19,11 @@ class Users(Base):
     password = Column(String)
     is_verfied = Column(Boolean, default=False) 
     is_active = Column(Boolean, default=False)
+    
+    
     note = relationship("Notes",back_populates="user")
     user_profile = relationship("UsersProfile",back_populates="user",uselist=False)
-    
+    like = relationship("Likes",back_populates="user")
 
 
 

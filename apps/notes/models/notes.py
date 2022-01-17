@@ -1,7 +1,3 @@
-import json
-from re import U
-from turtle import st
-from typing import List
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String,DateTime
 from sqlalchemy.orm import relationship
 from apps import users
@@ -27,7 +23,7 @@ class Notes(Base):
     updated_ts = Column(DateTime,default=datetime.now())
     
     user = relationship("Users",back_populates="note")
-    
+    like = relationship("Likes",back_populates="note")     
 
 
 

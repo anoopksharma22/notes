@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Any, Dict,Optional
 from apps.users.schemas import users as users_schema
 from uuid import UUID
-
+from typing import List,Dict,Any
 
 class NoteBase(BaseModel):
     creates_ts: datetime
