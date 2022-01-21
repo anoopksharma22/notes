@@ -1,5 +1,7 @@
 <template>
-  <QuillEditor theme="snow" toolbar="full" :modules="modules" />
+  <div class="container">
+    <QuillEditor theme="snow" toolbar="full" :modules="modules" />
+  </div>
 </template>
 
 <script>
@@ -24,3 +26,19 @@ export default {
   },
 };
 </script>
+
+<style>
+#app {
+  display: flex;
+  justify-content: center;
+}
+.container {
+}
+.ql-container {
+  background: rgba(250, 247, 224, 0.466)
+    radial-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+  background-size: 25px 25px;
+  height: 90vh;
+  box-shadow: 0 0 2px 0px;
+}
+</style>
