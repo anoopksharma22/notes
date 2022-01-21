@@ -10,6 +10,7 @@
   "dependencies": {
     "@vueup/vue-quill": "^1.0.0-beta.7",
     "core-js": "^3.6.5",
+    "quill-blot-formatter": "^1.0.5",
     "vue": "^3.0.0"
   },
   "devDependencies": {
