@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <QuillEditor theme="snow" toolbar="full" :modules="modules" />
+    <QuillEditor theme="snow" :toolbar="toolbar" :modules="modules" />
   </div>
 </template>
 
@@ -15,6 +15,23 @@ export default {
     QuillEditor,
   },
   setup: () => {
+    const toolbar = [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      // [{ header: 1 }, { header: 2 }], // custom button values
+      ["bold", "italic", "underline", "strike"], // toggled buttons
+      [{ script: "sub" }, { script: "super" }], // superscript/subscript
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+      ["blockquote", "code-block"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      // [{ direction: "rtl" }], // text direction
+
+      // [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+      // [{ font: [] }],
+      [{ align: [] }],
+
+      ["clean"], // remove formatting button
+    ];
     const modules = {
       name: "blotFormatter",
       module: BlotFormatter,
@@ -22,7 +39,7 @@ export default {
         /* options */
       },
     };
-    return { modules };
+    return { modules, toolbar };
   },
 };
 </script>
