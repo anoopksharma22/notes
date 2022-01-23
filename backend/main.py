@@ -18,6 +18,7 @@ from apps.notes.models import (
 from apps.auth import routes as auth_routes
 import logging
 from decouple import config
+from fastapi.middleware.cors import CORSMiddleware
 
 # logging.basicConfig(level=logging.NOTSET) ## to reset the root looging level
 logger = logging.getLogger(__name__)
@@ -29,6 +30,21 @@ else:
     logger.setLevel(logging.WARNING)
 
 app = FastAPI()
+
+# origins = [
+#     "http://localhost.tiangolo.com",
+#     "https://localhost.tiangolo.com",
+#     "http://localhost",
+#     "http://localhost:8080",
+# ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins="*",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 logging.info('Setting up routes')
 app.include_router(notes_routes.router)
