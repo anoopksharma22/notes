@@ -1,5 +1,5 @@
 <template>
-  <Editor msg="Welcome to Your Vue.js App" />
+  <Editor />
 </template>
 
 <script>
